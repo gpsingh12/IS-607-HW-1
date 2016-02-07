@@ -56,12 +56,12 @@ Frequency of data distribution among three landmasses.
 
 table(land$landmass)
 
-##  1  2  3 
-## 31 17 35
+ 1  2  3 
+31 17 35
 Subsetting and statistic
 NAm <- subset(land, landmass==1)
 
 
-#population in round millions for N.America landmass
+population in round millions for N.America landmass
 mean(NAm$population)
-## [1] 12.29032
+[1] 12.29032
