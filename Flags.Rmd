@@ -1,0 +1,114 @@
+---
+title: "Flags"
+author: "GP SINGH"
+date: "February 6, 2016"
+output: html_document
+---
+
+
+
+### The dataset Flags is chosen from UCI Machine Learning Repository.
+
+
+
+
+
+Reading the data from repository and creating a data frame
+
+
+
+
+```{r}
+
+
+
+y<- "https://archive.ics.uci.edu/ml/machine-learning-databases/flags/flag.data"
+
+x <- read.table(y, header = FALSE, sep = ",")
+```
+
+
+
+
+Assigning names to the dataset attributes
+
+```{r}
+
+
+
+
+names(x) <- c("country", "landmass", "zone", "area", "population", "language", 
+              "religion", "bars", "stripes", "colors", "red", "green", "blue",
+              "gold", "white", "black", "orange","mainhue", "circles", "crosses", 
+              "saltires", "quarters", "sunstars", "crescents", "triangle", "icon",
+              "animate", "text", "topleft", "botright")
+```
+
+
+
+
+Create a subset of dataset with value of landmass chosen 1, 2 and 3. There might be different scenarios for selection we can choose for the dataset, I am focussing on the landmasses
+N.America, S.America and Europe
+
+
+
+N.America = 1
+S.America = 2
+Europe = 3
+
+
+```{r}
+set1 <- subset(x, landmass == 1 | landmass == 2 | landmass == 3)
+```
+
+
+
+
+Set 1 consists of all the information about the N. American, S.American and Europe landmasses. Set 1 has 30 attributes same as the original dataset.
+The dataset is furthered filtered by their attributes. The information about the flags and their description is omitted. The land dataset is oriented towards languages,
+population and religion of theses three landmasses. Again according to the analytical 
+requirements, we can select the attributes we wish to consider for analysis.
+
+
+
+
+```{r}
+
+
+
+land <- set1[c(1:83), 1:7]
+str(land)
+
+
+```
+
+
+
+Dimension of our new dataset
+
+```{r}
+dim(land)
+
+```
+
+
+
+
+Frequency of data distribution among three landmasses.
+
+
+```{r}
+table(land$landmass)
+
+```
+
+
+Subsetting and statistic
+
+```{r}
+NAm <- subset(land, landmass==1)
+
+
+#population in round millions for N.America landmass
+mean(NAm$population)
+```
